@@ -2,11 +2,13 @@
   <div>
     <Header></Header>
     <nuxt />
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from "@/components/header";
+import Footer from '@/components/footer'
 export default {
   data() {
     return {
@@ -14,7 +16,8 @@ export default {
     }
   },
   components:{
-    Header
+    Header,
+    Footer
   }
 }
 </script>
@@ -31,4 +34,8 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+    *{
+     margin: 0;
+     padding: 0;   
+    }
 </style>

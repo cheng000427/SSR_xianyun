@@ -39,7 +39,9 @@ export default {
         color:inherit;
         text-decoration: none;
     }
-
+    i,em{
+        font-style: normal;
+    }
     .header{
         width: 1000px;
         margin: 0 auto;
