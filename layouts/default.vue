@@ -38,4 +38,14 @@ html {
      margin: 0;
      padding: 0;   
     }
+    a{
+      text-decoration: none;
+      color:inherit
+    }
+    ul,li,ol{
+      list-style: none;
+    }
+    i,em{
+        font-style: normal;
+    }
 </style>
