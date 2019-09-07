@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <el-row type="flex" justify="space-between">
+    <el-row type="flex" justify="space-between" class="main">
       <!-- logo -->
       <div class="logo">
         <img src="http://157.122.54.189:9093/images/logo.jpg" alt />
@@ -66,49 +66,93 @@ i,
 em {
   font-style: normal;
 }
-.header {
-  width: 1000px;
-  margin: 0 auto;
-  height: 60px;
-  line-height: 60px;
-  // box-shadow: 0 1px 1px #ddd;
-  // border-bottom: 2px #ddd solid;
-}
-.logo {
-  margin-top: 9px;
-  img {
-    width: 156px;
-    height: 42px;
-  }
-}
-.navs {
-  flex: 1;
-  margin-left: 30px;
-  a {
-    height: 60px;
-    line-height: 60px;
-    display: block;
-    padding: 0 10px;
-    &:hover {
-      color: #409eff;
-      box-sizing: border-box;
-      border-bottom: 5px #409eff solid;
-    }
-  }
-  .nuxt-link-exact-active {
-    background: #409eff;
-    color: #fff;
-    &:hover {
-      color: #fff;
-    }
-  }
-}
-.el-dropdown img {
-  width: 36px;
-  height: 36px;
-  vertical-align: middle;
-}
-.el-dropdown-link {
-  cursor: pointer;
-}
+  .header{
+        height: 60px;
+        line-height:60px;
+        background:#fff;
+        border-bottom: 1px #ddd solid;
+        box-shadow:0 3px 0 #f5f5f5;
+        box-sizing: border-box;
+
+        .main{
+            width:1000px;
+            margin:0 auto;
+        }
+
+        .logo{
+            width:156px;
+            padding-top:8px;
+
+            img{
+                display: block;
+                width:100%;
+            }
+        }
+
+        .navs{
+            margin: 0 20px;
+            flex:1;
+
+            a{
+                display:block;
+                padding:0 20px;
+                height:60px;
+                box-sizing: border-box;
+
+                &:hover,&:focus, &:active {
+                    border-bottom:5px #409eff solid;
+                    color:#409eff;
+                }
+            }
+
+            /deep/ .nuxt-link-exact-active{
+                background:#409eff;
+                color:#fff!important;
+            }
+        }
+
+        .message{
+            height:36px;
+            line-height:1;
+            cursor:pointer;
+            .el-icon-bell{
+                margin-right:2px;
+                font-size:18px;      
+            }
+        }
+
+        .el-dropdown-link{
+           margin-left:20px;
+
+           &:hover{
+               img{
+                    border-color: #409eff;
+               }
+            }
+
+           a{
+               display:block;
+           }
+
+            img{
+
+                width:32px;
+                height:32px;
+                vertical-align: middle;
+                border:2px #fff solid;
+                border-radius:50px;
+            }
+        }
+
+        .account-link{
+            font-size: 14px;
+            margin-left:10px;
+            color:#666;
+
+            &:hover{
+                color:#409eff;
+                text-decoration: underline;
+            }
+        }
+    } 
 </style>
