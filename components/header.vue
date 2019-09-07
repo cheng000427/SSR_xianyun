@@ -43,6 +43,7 @@ export default {
         hanhleClick(){
             this.$store.commit('user/clearUserInof')
             this.$message.info('退出成功')
+            this.$router.push('/')
         }
     }
 };
