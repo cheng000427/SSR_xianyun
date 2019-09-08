@@ -4,7 +4,7 @@
       <!-- 顶部过滤列表 -->
       <div class="flights-content">
         <!-- 过滤条件 -->
-        <div></div>
+        <flightsFilters :data="cacheFlightsData" @setDataLists="setDataLists" />
 
         <!-- 航班头部布局 -->
         <div>
@@ -23,15 +23,13 @@
             :page-sizes="[3, 5, 7, 9]"
             :page-size="pageSize"
             layout="total, sizes, prev, pager, next, jumper"
-            :total="flightsData.length"
+            :total="total"
           ></el-pagination>
         </div>
       </div>
 
       <!-- 侧边栏 -->
-      <div class="aside">
-        <!-- 侧边栏组件 -->
-      </div>
+      <flightsAside/>
     </el-row>
   </section>
 </template>
@@ -39,24 +37,38 @@
 <script>
 import flightsListHead from "@/components/air/flightsListHead.vue";
 import flightsItem from "@/components/air/flightsItem.vue";
+import flightsFilters from "@/components/air/flightsFilters.vue";
+import flightsAside from "@/components/air/flightsAside.vue";
 
 export default {
   data() {
     return {
       // 航班总数据
-      flightsData: [],
+      flightsData: {
+        flights: [],
+        info: {},
+        options: {}
+      },
+      cacheFlightsData: {
+        flights: [],
+        info: {},
+        options: {}
+      },
       dataList: [],
       //   总页数
       total: 0,
       //   当前页数
       pageIndex: 1,
       // 显示条数
-      pageSize: 3
+      pageSize: 3,
+      aa: []
     };
   },
   components: {
     flightsListHead,
-    flightsItem
+    flightsItem,
+    flightsFilters,
+    flightsAside
   },
   mounted() {
     //   航班数据
@@ -64,17 +76,27 @@ export default {
       url: "/airs",
       params: this.$route.query
     }).then(res => {
-      console.log(res);
-      this.flightsData = res.data.flights;
+      console.log(res.data);
+      this.flightsData = res.data;
+      // console.log(this.flightsData.flights);
+      this.total=res.data.flights.length
+      // console.log(this.total)
+      this.cacheFlightsData = { ...res.data };
       this.setDataList();
     });
   },
   methods: {
+    setDataLists(arr) {
+      // this.pageIndex=1
+      this.flightsData.flights = arr
+      this.setDataList()
+      this.total=arr.length
+    },
     setDataList() {
       // 开始
       const state = (this.pageIndex - 1) * this.pageSize;
       const end = state + this.pageSize;
-      this.dataList = this.flightsData.slice(state, end);
+      this.dataList = this.flightsData.flights.slice(state, end);
     },
     //   分页
     // 切换条数触发

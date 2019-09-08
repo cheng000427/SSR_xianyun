@@ -201,6 +201,9 @@ export default {
                return
            }
 
+        //    存储历史记录到本地
+        localStorage.setItem()
+
             // 验证成功就跳转路由
             this.$router.push({
                 path:"/air/flights",

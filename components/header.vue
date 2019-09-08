@@ -50,10 +50,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-* {
-  padding: 0;
-  margin: 0;
-}
+
 ul,
 li,
 ol {
