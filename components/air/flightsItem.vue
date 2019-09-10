@@ -45,7 +45,7 @@
             </el-col>
             <el-col :span="5" class="price">￥{{ item.org_settle_price}}</el-col>
             <el-col :span="3" class="choose-button">
-              <el-button type="warning" size="mini">选定</el-button>
+              <el-button type="warning" size="mini" @click="handelClick(data.id,item)">选定</el-button>
               <p>剩余：{{ item.discount }}</p>
             </el-col>
           </el-row>
@@ -67,6 +67,18 @@ export default {
     data: {
       type: Object,
       default: ""
+    }
+  },
+  methods: {
+    handelClick(id,item) {
+      const seat_xid  = item.seat_xid;
+      this.$router.push({
+        path: "/air/order",
+        query: {
+          id,
+          seat_xid:seat_xid
+        }
+      });
     }
   },
   // 时间差

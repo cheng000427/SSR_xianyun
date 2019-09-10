@@ -70,13 +70,22 @@ export default {
     flightsFilters,
     flightsAside
   },
+  watch:{
+    $route(){
+      this.getData()
+    }
+  },
   mounted() {
-    //   航班数据
+    this.getData()
+  },
+  methods: {
+    getData(){
+      //   航班数据
     this.$axios({
       url: "/airs",
       params: this.$route.query
     }).then(res => {
-      console.log(res.data);
+      console.log(123,res.data);
       this.flightsData = res.data;
       // console.log(this.flightsData.flights);
       this.total=res.data.flights.length
@@ -84,8 +93,7 @@ export default {
       this.cacheFlightsData = { ...res.data };
       this.setDataList();
     });
-  },
-  methods: {
+    },
     setDataLists(arr) {
       // this.pageIndex=1
       this.flightsData.flights = arr

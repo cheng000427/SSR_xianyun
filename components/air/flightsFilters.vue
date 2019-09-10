@@ -80,7 +80,7 @@ export default {
   methods: {
     // 选择机场时候触发
     handleAirport(value) {
-      console.log(value);
+      // console.log(value);
       const arr = this.data.flights.filter(v => {
         return v.org_airport_name === value;
       });
@@ -91,7 +91,7 @@ export default {
 
     // 选择出发时间时候触发
     handleFlightTimes(value) {
-      console.log(value);
+      // console.log(value);
       const [from, to] = value.split(",");
       const arr = this.data.flights.filter(v => {
         const start = +v.dep_time.split(":")[0];
